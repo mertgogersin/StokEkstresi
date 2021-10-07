@@ -28,14 +28,26 @@ namespace StokEkstresi
         {
             try
             {
-                string malKodu = txtMalKodu.Text;
-                int baslangicTarihi = Convert.ToInt32(Convert.ToDateTime(txtBaslangicTarihi.Text).ToOADate());
-                int bitisTarihi = Convert.ToInt32(Convert.ToDateTime(txtBitisTarihi.Text).ToOADate());
-                gcStokEkstresi.DataSource = dbContext.sp_Stok_Ekstresi(malKodu, baslangicTarihi, bitisTarihi);
+                if (txtBaslangicTarihi.Text != "" && txtBitisTarihi.Text != "")
+                {
+                    string malKodu = txtMalKodu.Text == "" ? null : txtMalKodu.Text;            
+                    int baslangicTarihi = Convert.ToInt32(Convert.ToDateTime(txtBaslangicTarihi.Text).ToOADate());
+                    int bitisTarihi = Convert.ToInt32(Convert.ToDateTime(txtBitisTarihi.Text).ToOADate());
+
+                    gcStokEkstresi.DataSource = dbContext.sp_Stok_Ekstresi(malKodu, baslangicTarihi, bitisTarihi);
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen iki tarihi de giriniz");
+                }
             }
             catch (FormatException)
             {
                 MessageBox.Show("Lütfen tarih kısmını formata uygun bir şekilde doldurunuz (DD.MM.YYYY)");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bir hata oluştu");
             }
         }
     }
