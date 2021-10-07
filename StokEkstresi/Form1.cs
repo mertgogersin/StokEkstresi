@@ -30,7 +30,7 @@ namespace StokEkstresi
             {
                 if (txtBaslangicTarihi.Text != "" && txtBitisTarihi.Text != "") //başlangıç ve bitiş tarihleri girmek zorunlu yapılmıştır.
                 {
-                    string malKodu = txtMalKodu.Text == "" ? null : txtMalKodu.Text; //mal kodu girilmediyse veri null a çevrilip stored procedure'a atılır.       
+                    string malKodu = string.IsNullOrWhiteSpace(txtMalKodu.Text) ? null : txtMalKodu.Text; //mal kodu girilmediyse veri null a çevrilip stored procedure'a atılır.       
                     int baslangicTarihi = Convert.ToInt32(Convert.ToDateTime(txtBaslangicTarihi.Text).ToOADate());
                     int bitisTarihi = Convert.ToInt32(Convert.ToDateTime(txtBitisTarihi.Text).ToOADate());
 
