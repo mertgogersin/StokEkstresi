@@ -21,16 +21,16 @@ namespace StokEkstresi
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            gcStokEkstresi.DataSource = dbContext.sp_Stok_Ekstresi(null, null, null);
+            gcStokEkstresi.DataSource = dbContext.sp_Stok_Ekstresi(null, null, null); //bütün veriler gelir.
         }
 
         private void btnAra_Click(object sender, EventArgs e)
         {
             try
             {
-                if (txtBaslangicTarihi.Text != "" && txtBitisTarihi.Text != "")
+                if (txtBaslangicTarihi.Text != "" && txtBitisTarihi.Text != "") //başlangıç ve bitiş tarihleri girmek zorunlu yapılmıştır.
                 {
-                    string malKodu = txtMalKodu.Text == "" ? null : txtMalKodu.Text;            
+                    string malKodu = txtMalKodu.Text == "" ? null : txtMalKodu.Text; //mal kodu girilmediyse veri null a çevrilip stored procedure'a atılır.       
                     int baslangicTarihi = Convert.ToInt32(Convert.ToDateTime(txtBaslangicTarihi.Text).ToOADate());
                     int bitisTarihi = Convert.ToInt32(Convert.ToDateTime(txtBitisTarihi.Text).ToOADate());
 
@@ -45,7 +45,7 @@ namespace StokEkstresi
             {
                 MessageBox.Show("Lütfen tarih kısmını formata uygun bir şekilde doldurunuz (DD.MM.YYYY)");
             }
-            catch (Exception)
+            catch (Exception) //Beklemediğimiz bir hata durumunda buradaki catch bloğuna girecektir.
             {
                 MessageBox.Show("Bir hata oluştu");
             }
