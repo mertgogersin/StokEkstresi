@@ -133,6 +133,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="StokEkstresiStoreProcedure.txt" />
     <Content Include="TestDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TestDB.Context.cs</LastGenOutput>

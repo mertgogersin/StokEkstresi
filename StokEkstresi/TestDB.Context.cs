@@ -31,7 +31,7 @@ namespace StokEkstresi
         public virtual DbSet<STK> STK { get; set; }
         public virtual DbSet<StokEkstresi> StokEkstresi { get; set; }
     
-        public virtual ObjectResult<sp_Stok_Ekstresi_Result> sp_Stok_Ekstresi(string malKodu, Nullable<System.DateTime> baslangicTarihi, Nullable<System.DateTime> bitisTarihi)
+        public virtual ObjectResult<sp_Stok_Ekstresi_Result> sp_Stok_Ekstresi(string malKodu, Nullable<int> baslangicTarihi, Nullable<int> bitisTarihi)
         {
             var malKoduParameter = malKodu != null ?
                 new ObjectParameter("malKodu", malKodu) :
@@ -39,11 +39,11 @@ namespace StokEkstresi
     
             var baslangicTarihiParameter = baslangicTarihi.HasValue ?
                 new ObjectParameter("baslangicTarihi", baslangicTarihi) :
-                new ObjectParameter("baslangicTarihi", typeof(System.DateTime));
+                new ObjectParameter("baslangicTarihi", typeof(int));
     
             var bitisTarihiParameter = bitisTarihi.HasValue ?
                 new ObjectParameter("bitisTarihi", bitisTarihi) :
-                new ObjectParameter("bitisTarihi", typeof(System.DateTime));
+                new ObjectParameter("bitisTarihi", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Stok_Ekstresi_Result>("sp_Stok_Ekstresi", malKoduParameter, baslangicTarihiParameter, bitisTarihiParameter);
         }
