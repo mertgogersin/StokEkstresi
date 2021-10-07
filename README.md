@@ -1,5 +1,5 @@
 # StokEkstresi
-Store Procedure oluşturarak data çekip filtreleme (WinFormAPP)
+Stored Procedure oluşturarak data çekip filtreleme (WinFormAPP)
 
 İlk commit ederken Stored Procedure ve tabloları Entity Framework DB First yaklaşımıyla çektim.
 
